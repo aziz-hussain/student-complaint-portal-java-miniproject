@@ -1,13 +1,11 @@
-FROM openjdk:17-slim
+FROM eclipse-temurin:17
 
 WORKDIR /app
 
-COPY . /app
+COPY . .
 
-RUN find . -name "*.java" > sources.txt
-
-RUN javac -cp "lib/*" @sources.txt
+RUN javac -d out $(find src -name "*.java")
 
 EXPOSE 8080
 
-CMD ["java", "-cp", ".:lib/*", "core.HttpServerMain"]
+CMD ["java", "-cp", "out", "core.HttpServerMain"]
