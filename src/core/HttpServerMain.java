@@ -1,5 +1,7 @@
 package core;
 import com.sun.net.httpserver.HttpServer;
+
+import api.ComplaintController;
 import api.HelloController;
 import api.LoginController;
 import java.net.InetSocketAddress;
@@ -11,6 +13,8 @@ public class HttpServerMain {
         
         server.createContext("/hello", new HelloController());
         server.createContext("/login", new LoginController());
+        server.createContext("/complaints", new ComplaintController());
+
 
         server.setExecutor(null);
         server.start();
