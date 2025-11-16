@@ -1,0 +1,35 @@
+✅ 1. APIs you need to create (final list)
+AUTH
+
+POST /login
+Input: email, password
+Output: access token + user info
+
+STUDENT
+
+POST /complaints
+Create complaint
+(input: category, description)
+
+GET /complaints/my
+List complaints created by logged-in student
+
+ADMIN
+
+GET /complaints/all
+List all complaints
+
+PUT /complaints/{id}/assign
+Assign complaint to staff
+(input: staff_id)
+
+STAFF + ADMIN
+
+PUT /complaints/{id}/status
+Update status
+(input: new_status, remarks)
+
+ANY LOGGED-IN USER
+
+GET /complaints/{id}
+View single complaint + history

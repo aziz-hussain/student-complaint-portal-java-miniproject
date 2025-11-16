@@ -1,0 +1,3 @@
+javac -d out src/api/HelloController.java src/core/HttpServerMain.java
+
+java -cp out core.HttpServerMain
