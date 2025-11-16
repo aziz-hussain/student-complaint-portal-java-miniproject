@@ -29,6 +29,13 @@ public class ComplaintController implements HttpHandler {
             JsonObject decoded = TokenHelper.decode(token);
 
             int userId = decoded.get("user_id").getAsInt();
+            String role = decoded.get("role").getAsString();
+
+            // allow only STUDENT
+            if (!"STUDENT".equalsIgnoreCase(role)) {
+                ResponseHelper.send(exchange, 403, "Access denied: only students can create complaints");
+                return;
+            }
 
             // BODY
             String body = new String(exchange.getRequestBody().readAllBytes());
@@ -38,7 +45,7 @@ public class ComplaintController implements HttpHandler {
             String description = json.get("description").getAsString();
             int isAnon = json.get("is_anonymous").getAsInt();
 
-            // DB INSERT (your style)
+            // DB INSERT
             Db db = new Db();
             int rows = db.runUpdate(
                 "INSERT INTO complaints (user_id, category, description, is_anonymous, status, created_at, updated_at) " +
