@@ -7,35 +7,33 @@ import com.google.gson.JsonObject;
 
 public class TokenHelper {
 
-    private static final String SECRET = "my_super_secret_key_123";
+    private static final String SECRET = "kaccha_pappad_pakka_pappad";
 
-    public static String generateJwt(int userId, String email) throws Exception {
+    public static String generateJwt(int userId, String email, String role) throws Exception {
 
-        // -------- HEADER --------
         JsonObject header = new JsonObject();
         header.addProperty("alg", "HS256");
         header.addProperty("typ", "JWT");
-
+    
         String headerJson = header.toString();
         String headerBase64 = base64UrlEncode(headerJson.getBytes());
-
-        // -------- PAYLOAD --------
+    
         JsonObject payload = new JsonObject();
         payload.addProperty("user_id", userId);
         payload.addProperty("email", email);
+        payload.addProperty("role", role);
         payload.addProperty("ts", System.currentTimeMillis());
-
+    
         String payloadJson = payload.toString();
         String payloadBase64 = base64UrlEncode(payloadJson.getBytes());
-
-        // -------- SIGNATURE --------
+    
         String msg = headerBase64 + "." + payloadBase64;
         String signature = hmacSha256(msg, SECRET);
         String signatureBase64 = base64UrlEncode(signature.getBytes());
-
-        // -------- FINAL JWT --------
+    
         return headerBase64 + "." + payloadBase64 + "." + signatureBase64;
     }
+    
 
     private static String hmacSha256(String msg, String secret) throws Exception {
         Mac sha256 = Mac.getInstance("HmacSHA256");
