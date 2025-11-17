@@ -1,4 +1,4 @@
-package api;
+package api.student;
 
 import core.Db;
 import core.helpers.ResponseHelper;

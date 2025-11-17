@@ -1,4 +1,4 @@
-package api;
+package api.auth;
 import core.helpers.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -6,7 +6,6 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import core.Db;
 
-import java.io.OutputStream;
 import java.sql.ResultSet;
 
 public class LoginController implements HttpHandler {

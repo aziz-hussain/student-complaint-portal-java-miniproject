@@ -1,4 +1,4 @@
-package api;
+package api.health;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
