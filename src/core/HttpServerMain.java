@@ -5,6 +5,8 @@ import api.ComplaintController;
 import api.ComplaintMyController;
 import api.HelloController;
 import api.LoginController;
+import api.admin.ComplaintAllController;
+
 import java.net.InetSocketAddress;
 
 public class HttpServerMain {
@@ -16,6 +18,8 @@ public class HttpServerMain {
         server.createContext("/login", new LoginController());
         server.createContext("/complaints", new ComplaintController());
         server.createContext("/complaints/my", new ComplaintMyController());
+        server.createContext("/complaints/all", new ComplaintAllController());
+
 
 
 
