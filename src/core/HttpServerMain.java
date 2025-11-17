@@ -2,6 +2,7 @@ package core;
 import com.sun.net.httpserver.HttpServer;
 
 import api.admin.ComplaintAllController;
+import api.admin.ComplaintAssignController;
 import api.admin.StaffAllController;
 import api.auth.LoginController;
 import api.health.HelloController;
@@ -21,6 +22,9 @@ public class HttpServerMain {
         server.createContext("/complaints/my", new ComplaintMyController());
         server.createContext("/complaints/all", new ComplaintAllController());
         server.createContext("/staff/all", new StaffAllController());
+        server.createContext("/complaints/assign", new ComplaintAssignController());
+
+
 
 
 
